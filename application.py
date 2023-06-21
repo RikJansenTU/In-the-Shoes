@@ -2,6 +2,18 @@ import gradio as gr
 from diffusers import StableDiffusionPipeline
 import torch
 
+tde_theme = gr.themes.Default().set(
+    body_background_fill='#040617',
+    body_background_fill_dark="linear-gradient(to top right, #4f0829, #040617)",
+    button_large_radius='*radius_xxl',
+    button_secondary_background_fill='#f5f5f5',
+    button_secondary_background_fill_dark='#f5f5f5',
+    button_secondary_background_fill_hover='#dcddde',
+    button_secondary_background_fill_hover_dark='#dcddde',
+    button_secondary_text_color='#040617',
+    button_secondary_text_color_dark='#040617',
+)
+
 def finetune_model_on_face():
     #TODO
     return
@@ -24,7 +36,7 @@ def generate_images(action, team):
 
     return {image_output: gr.update(visible=True, value=images)}
 
-with gr.Blocks() as demo:
+with gr.Blocks(theme=tde_theme) as demo:
     with gr.Row():
         image_input_1 = gr.Image(label='Image Upload')
         image_input_2 = gr.Image(label='Image Upload')
